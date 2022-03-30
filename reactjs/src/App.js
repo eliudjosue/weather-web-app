@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import Location from './components/Location';
 import './App.css';
+import Climacard from './components/Climacard';
+import Prevision from './components/Prevision';
+import Dias from './components/Dias';
 
 function App() {
+  // const [dias, setDias] = React.useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita <code>src/App.js</code> y guarda para ver cambios.
-        </p>
-        <a
-          className="App-link"
-          href="https://codealo.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aprende con Codealo
-        </a>
-      </header>
+    <div className="container">
+     <Location/>
+     <Climacard/>
+     <Prevision/>
+     <Dias dias={'Lunes'}/>
+     <Dias dias={'Martes'}/>
+     <Dias dias={'Miercoles'}/>
+     <Dias dias={'Jueves'}/>
+     <Dias dias={'Viernes'}/>
+     <Dias dias={'Sabado'}/>
+     <Dias dias={'Domingo'}/>
     </div>
   );
 }

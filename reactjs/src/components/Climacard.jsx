@@ -2,7 +2,7 @@ import React from 'react'
 import sol from '../images/sol.png'
 
 const Climacard = (props) => {
-  const {main, weather} = props;
+  const {main, weather, dato} = props;
 
   const toCelsius= (kelvin) => {
     return Math.round(kelvin - 273.15);
@@ -11,11 +11,23 @@ const Climacard = (props) => {
    
         <div className='card-container container'>
             <img src={sol} alt='sol' className='temp-img'/>
-            <div>
+            {
+              !dato ?  (
+                <div>
+                <div className='card-actual'>--</div>
+                <div className='card-temp'>--/--°c</div>
+                <div className='card-wheader'>--</div>
+              </div>
+              ):(
+                <div>
                 <div className='card-actual'>Clima actual</div>
                 <div className='card-temp'>{toCelsius(main.temp_max)}/{toCelsius(main.temp_min)}°c</div>
                 <div className='card-wheader'>{weather.description}</div>
             </div>
+              )
+              
+            }
+            
         </div>
        
   

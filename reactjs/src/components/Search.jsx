@@ -5,7 +5,7 @@ import searchImg from '../images/search.png'
 const Search = (props) => {
     const [search, setSearch] = React.useState('');
 
-    const {getData} = props;
+    const {getData, getData2, lon, lat} = props;
     const onChange = (e) => {
         setSearch(e.target.value)
         if(e.target.value.length === 0){
@@ -15,6 +15,7 @@ const Search = (props) => {
 
     const onSearch = (e) => {
         getData(search)
+        getData2(lat, lon); 
     }
 
   return (

@@ -1,12 +1,13 @@
 import React from 'react'
+import { toCelsius } from '../api';
 import sol from '../images/sol.png'
 
 const Climacard = (props) => {
   const {main, weather, dato} = props;
 
-  const toCelsius= (kelvin) => {
-    return Math.round(kelvin - 273.15);
-  }
+  // const toCelsius= (kelvin) => {
+  //   return Math.round(kelvin - 273.15);
+  // }
   return (
    
         <div className='card-container container'>

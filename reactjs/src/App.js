@@ -17,7 +17,7 @@ function App() {
   const [lat, setLat] = React.useState(Number);
   const [lon, setLon] = React.useState(Number);
 
-  const [prev, setPrev] = React.useState([]);
+  const [prevs, setPrev] = React.useState([]);
 
 
 
@@ -30,7 +30,6 @@ function App() {
       setWeather(result.weather[0]);
       setLon(data.coord.lon);
       setLat(data.coord.lat);
-      getData2(lat, lon);  
       console.log(result);
     } catch (error) {
       console.log(error)
@@ -43,23 +42,20 @@ function App() {
       try {
         const result = await fetchData2(lat, lon)
         setPrev(result.daily);
-        console.log(result.daily)
       } catch (error) {
         console.log(error)
       }
     }
 
   
-             
-        
- 
-         
- 
-      
+            
 
   return (
     <div className="container">
-      <Search getData={getData}/>
+      <Search getData={getData}
+              getData2={getData2}
+              lon={lon}
+              lat={lat}/>
      <Location data={data}
                dato={dato}/>
      <Climacard main={main}
@@ -69,7 +65,7 @@ function App() {
 
 
 
-     <Dias prev={prev}/>
+     <Dias prev={prevs}/>
     </div>
   );
 }

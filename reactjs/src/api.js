@@ -15,7 +15,7 @@ export const fetchData = async (query) => {
 
 export const fetchData2 = async (lat, lon) => {
     try {
-        const response = await fetch(`${api.url2}?lat=${lat}&lon=${lon}&include=hourly,daily&appid=${api.key}&lang=es`);
+        const response = await fetch(`${api.url2}?lat=${lat}&lon=${lon}&exclude=hourly&appid=${api.key}&lang=es`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -24,4 +24,6 @@ export const fetchData2 = async (lat, lon) => {
     }
 }
 
-
+export const toCelsius= (kelvin) => {
+    return Math.round(kelvin - 273.15);
+  }

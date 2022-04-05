@@ -1,25 +1,43 @@
 import React from 'react'
+import { toCelsius } from '../api';
 import frame from '../images/Frame.png'
 
+
 const Dias = (props) => {
-    const prev = props;
-    console.log(prev)
+  // const [dia, setDia] = React.useState('');
+    const prevs = props;
+
   return (
-    <div className='dias-container'>
-      {/* <div>
-        {prev.map((daily)=>{
+    <div>
+      <div>
+        { prevs.prev.map( (prev,idx) => {
+          
+          const DIAS_SEMANA =[
+            'Domingo',
+            'Lunes',
+            'Martes',
+            'Miercoles',
+            'Jueves',
+            'Viernes',
+            'Sabado',
+            'Domingo'
+          ]
+
+          const dia = DIAS_SEMANA[idx]
+         
           return(
-            <div>
+            
+            <div key={idx}  className='dias-container'>
                <img src={frame} alt='frame' className='dias-frame'/>
                 <div  className='dias'>
-                  <div></div>
-                    <div className='dias-temp'> | 24/15 °C</div> 
+                  <div className='dias'>{dia }</div>
+                    <div className='dias-temp'> | { toCelsius(prev.temp.max)} / {toCelsius(prev.temp.min)} °C</div> 
                 </div>
             </div>
           )
         })
         }
-      </div> */}
+      </div>
        
         
     </div>

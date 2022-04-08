@@ -123,6 +123,7 @@ color: #242634;
 .dias-temp{
   font-weight: normal;
   opacity: 0.5;
+  margin-left: 5px;
 }
 
 .location{

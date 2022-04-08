@@ -23,14 +23,14 @@ function App() {
 
   const getData = async(query) =>{
     try {
-      setDato(true);
       const result = await fetchData(query)
       setMain(result.main);
+      setDato(true);
       setData(result);
+      console.log(result);
       setWeather(result.weather[0]);
       setLon(data.coord.lon);
       setLat(data.coord.lat);
-      console.log(result);
     } catch (error) {
       console.log(error)
     }
@@ -42,6 +42,7 @@ function App() {
       try {
         const result = await fetchData2(lat, lon)
         setPrev(result.daily);
+        console.log(result)
       } catch (error) {
         console.log(error)
       }

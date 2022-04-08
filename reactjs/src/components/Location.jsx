@@ -13,7 +13,15 @@ const d = new Date()
   return (
     <div className='location'>
       {
-        !dato ?(
+        dato ?(
+            <div>
+            <div className='location-city'>
+              <img src={location} alt='location'/>
+              <div>{data.name} | xxxxx </div> 
+            </div>
+            <div className='location-day'> Dia: {getDate()} | Hora actual: 16:57</div>
+        </div>
+        ):(
           <div>
             <div className='location-city'>
               <img src={location} alt='location'/>
@@ -21,14 +29,6 @@ const d = new Date()
             </div>
             <div className='location-day'> Dia: {getDate()} | Hora actual: {d.getHours()}:{d.getMinutes()}</div>
           </div>
-        ):(
-          <div>
-            <div className='location-city'>
-              <img src={location} alt='location'/>
-              <div>{data.name} | </div> 
-            </div>
-            <div className='location-day'> Dia: {getDate()} | Hora actual: 16:57</div>
-        </div>
         )
       }
     </div>

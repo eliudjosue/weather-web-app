@@ -9,60 +9,79 @@ import { fetchData, fetchData2 } from './api';
 
 
 function App() {
-  // const [dias, setDias] = React.useState('');
-  const [main, setMain] = React.useState([])
   const [data, setData] = React.useState([]);
-  const [weather, setWeather] = React.useState([]);
   const [dato, setDato] = React.useState(false);
-  const [lat, setLat] = React.useState(Number);
-  const [lon, setLon] = React.useState(Number);
-
-  const [prevs, setPrev] = React.useState([]);
-
+  const [datos, setDatos] = React.useState(false);
+  const [prevs, setPrevs] = React.useState([]);
+  const [prev, setPrev] = React.useState([]);
 
 
   const getData = async(query) =>{
+    let lon
+    let lat
     try {
       const result = await fetchData(query)
-      setMain(result.main);
-      setDato(true);
       setData(result);
+      setDato(true);
       console.log(result);
-      setWeather(result.weather[0]);
-      setLon(data.coord.lon);
-      setLat(data.coord.lat);
+      lon = (data.coord.lon);
+      lat = (data.coord.lat);
+      getData2(lat, lon)
     } catch (error) {
       console.log(error)
     }
   }
 
+  const getData2 = async(lat, lon) =>{
+    try {
+      const result = await fetchData2(lat, lon)
+      setPrevs(result.daily);
+      setPrev(result);
+      setDatos(true);
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+ 
+   
+    React.useEffect(()=>{
+      let lon
+      let lat
+  window.addEventListener('load', () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition( posicion => {
+          lon = (posicion.coords.longitude) 
+          lat = (posicion.coords.latitude) 
+            console.log(posicion);
+            getData2(lat, lon)
+        })
+    }
+   })
+ 
+      
+    },[])
  
 
-  const getData2 = async(lat, lon) =>{
-      try {
-        const result = await fetchData2(lat, lon)
-        setPrev(result.daily);
-        console.log(result)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-  
-            
-
+ 
+          
   return (
     <div className="container">
       <Search getData={getData}
-              getData2={getData2}
-              lon={lon}
-              lat={lat}/>
+              getData2={getData2}/>
      <Location data={data}
-               dato={dato}/>
-     <Climacard main={main}
-                weather={weather}
-                dato={dato}/>
-     <Prevision data={data}/>
+               dato={dato}
+               datos={datos}
+               prev={prev}/>
+     <Climacard data={data}
+                dato={dato}
+                datos={datos}
+                prev={prev}/>
+     <Prevision data={data}
+                dato={dato}
+                prev={prev}/>
 
 
 

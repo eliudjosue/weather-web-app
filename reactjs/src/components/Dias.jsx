@@ -22,7 +22,7 @@ const Dias = (props) => {
                 <div key={idx}  className='dias-container'>
                 <img src={frame} alt='frame' className='dias-frame'/>
                   <div  className='dias'>
-                    <div className='dias'>{moment(prev.dt*1000).format('ddd') }</div>
+                    <div className='dias'>{moment(prev.dt*1000).format('dddd') }</div>
                       <div className='dias-temp'> | { toCelsius(prev.temp.max)} / {toCelsius(prev.temp.min)} °C</div> 
                   </div>
                 </div>

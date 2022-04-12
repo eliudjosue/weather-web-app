@@ -5,24 +5,31 @@ import searchImg from '../images/search.png'
 const Search = (props) => {
     const [search, setSearch] = React.useState('');
 
-    const {getData, getData2, lon, lat} = props;
-    const onChange = (e) => {
-        setSearch(e.target.value)
-        if(e.target.value.length === 0){
-      onSearch(null)
-    }
-    }
+    const {getData} = props;
+
+
 
     const onSearch = (e) => {
+        e.preventDefault()
+
+        if(!search.trim()){
+            console.log('vacio')
+            return
+          }
+
         getData(search)
-        getData2(lat, lon); 
+       
     }
 
   return (
     <div>
         <div className='search-container'>
             <img src={searchImg} alt='' className='search-icon'/>
-            <input onChange={onChange} placeholder='Buscar localidad...' className='search-input'/>
+            <input 
+            onChange={e => setSearch(e.target.value)} 
+            placeholder='Buscar localidad...' 
+            className='search-input'
+            value={search}/>
             <button onClick={onSearch}  className='search-icon-left'>
                 <div>
                     <RightArrow/>

@@ -13,8 +13,8 @@ code {
 }
 
 .temp-img{
-  width: 80px;
-  margin-right: 20px;
+  width: 100px;
+  /* margin-right: 20px; */
 }
 
 .card-container{
@@ -117,7 +117,7 @@ color: #242634;
 .dias-frame{
   position:absolute;
   display: flex;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .dias-temp{
@@ -203,6 +203,7 @@ color: #242634;
 }
 
 .search-input{
+  display: flex;
   font-family: 'Lato';
   font-style: normal;
   font-size: 18px;

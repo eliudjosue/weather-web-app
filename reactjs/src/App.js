@@ -26,9 +26,12 @@ function App() {
       console.log(result);
       lon = (data.coord.lon);
       lat = (data.coord.lat);
-      getData2(lat, lon)
     } catch (error) {
       console.log(error)
+    }
+
+    if (lon && lat) {
+      getData2(lat, lon)
     }
   }
 

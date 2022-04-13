@@ -28,7 +28,7 @@ const Search = (props) => {
             <input 
             onChange={e => setSearch(e.target.value)} 
             placeholder='Buscar localidad...' 
-            className='search-input'
+            className='input search-input'
             value={search}/>
             <button onClick={onSearch}  className='search-icon-left'>
                 <div>

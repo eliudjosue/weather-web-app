@@ -24,8 +24,8 @@ function App() {
       setData(result);
       setDato(true);
       console.log(result);
-      lon = (data.coord.lon);
-      lat = (data.coord.lat);
+      lon = result.coord.lon
+      lat = result.coord.lat
     } catch (error) {
       console.log(error)
     }

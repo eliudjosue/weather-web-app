@@ -32,9 +32,6 @@ const Climacard = (props) => {
 }
  }
  
- 
-
- console.log(prev)
   return (
    
         <div>

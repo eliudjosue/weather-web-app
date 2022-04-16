@@ -1,10 +1,10 @@
-const api = { key: 'afceb549d1d1af690cee25ef341b3fa1',
-url:`http://api.openweathermap.org/data/2.5/weather`,
-url2:`https://api.openweathermap.org/data/2.5/onecall`
-}
+const token = process.env.REACT_APP_TOKEN;
+const api = process.env.REACT_APP_API;
+const api2 = process.env.REACT_APP_API2;
+
 export const fetchData = async (query) => {
     try {
-        const response = await fetch(`${api.url}?q=${query}&appid=${api.key}&lang=es`);
+        const response = await fetch(`${api}?q=${query}&appid=${token}&lang=es`);
         const data = await response.json();
         return data;
     } catch (err) {
@@ -15,7 +15,7 @@ export const fetchData = async (query) => {
 
 export const fetchData2 = async (lat, lon) => {
     try {
-        const response = await fetch(`${api.url2}?lat=${lat}&lon=${lon}&exclude=hourly,minutely,alerts&appid=${api.key}&lang=es`);
+        const response = await fetch(`${api2}?lat=${lat}&lon=${lon}&exclude=hourly,minutely,alerts&appid=${token}&lang=es`);
         const data = await response.json();
         return data;
     } catch (error) {
